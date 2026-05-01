@@ -1,0 +1,16 @@
+background-color=#282828
+text-color=#ebdbb2
+border-color=#fabd2f
+border-size=3
+border-radius=3
+progress-color=source #fe8019
+font=JetBrains Mono Nerd Font 10
+
+[urgency=low]
+border-color=#928374
+
+[urgency=normal]
+border-color=#fabd2f
+
+[urgency=high]
+border-color=#cc241d

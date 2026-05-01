@@ -1,0 +1,66 @@
+theme = "gruvbox"
+
+[editor]
+line-number = "relative"
+mouse = true
+bufferline = "multiple"
+true-color = true
+color-modes = true
+scrolloff = 9
+cursorline = true
+soft-wrap.enable = true
+idle-timeout = 300
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name"]
+center = ["file-modification-indicator", "read-only-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.whitespace.characters]
+space = "·"
+nbsp = "⍽"
+tab = "→"
+newline ="⏎"
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+newline = "none"
+trailing = "all"
+
+[keys.normal]
+"H" = "goto_previous_buffer"
+"L" = "goto_next_buffer"
+"space".w = ":w"
+"space".q = ":bc"
+"V" = "vsplit"
+"S" = "hsplit"
+"C-h" = "jump_view_left"
+"C-j" = "jump_view_down"
+"C-k" = "jump_view_up"
+"C-l" = "jump_view_right"
+"C-w".q = "wclose"
+
+[keys.insert]
+"j" = { k = "normal_mode" }
+"k" = { j = "normal_mode" }

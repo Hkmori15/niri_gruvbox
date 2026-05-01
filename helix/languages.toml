@@ -1,0 +1,40 @@
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "rust"
+auto-format = true
+
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index", "--clang-tidy", "--completion-style=detailed"]
+
+[[language]]
+name = "c"
+auto-format = true
+language-servers = ["clangd"]
+
+[[language]]
+name = "cpp"
+auto-format = true
+language-servers = ["clangd"]
+
+[language-server.zls]
+command = "zls"
+
+[[language]]
+name = "zig"
+auto-format = true
+language-servers = ["zls"]
+
+[[language]]
+name = "toml"
+auto-format = true
+
+[language-server.wgsl-analyzer]
+command = "wgsl-analyzer"
+
+[[language]]
+name = "wgsl"
+auto-format = true
+language-servers = ["wgsl-analyzer"]

@@ -1,0 +1,32 @@
+window {
+   border-radius: 18px;
+   background: #282828;
+   border: 3px solid #fe8019;
+}
+
+#container {
+   margin: 8px;
+}
+
+progressbar:disabled {
+   opacity: 0.3;
+}
+
+progress,
+trough {
+   border-radius: 8px;
+   min-height: 8px;
+}
+
+trough {
+   background-color: #504945;
+}
+
+progress {
+   background-color: #ebdbb2;
+}
+
+label {
+   color: #ebdbb2;
+   font-weight: bold;
+}
