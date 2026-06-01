@@ -1,0 +1,66 @@
+(defwindow bar
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "33px"
+                      :anchor "top center")
+  :stacking "fg"
+  :exclusive true
+  :focusable false
+  (bar_layout :monitor "eDP-1"))
+
+(defwidget bar_layout [monitor]
+  (centerbox :orientation "h"
+    (left_modules :monitor monitor)
+    (center_modules)
+    (right_modules)))
+
+(defwidget left_modules [monitor]
+  (box :orientation "h" :space-evenly false :halign "start"
+    (workspaces :monitor monitor)))
+
+(defwidget center_modules []
+  (box :orientation "h" :space-evenly false :halign "center"
+    (clock)))
+
+(defwidget right_modules []
+  (box :orientation "h" :space-evenly false :halign "end"
+    (memory)
+    (cpu)
+    (disk)))
+
+(deflisten niri_data :initial '{"outputs": {"eDP-1": {"workspaces": []}, "HDMI-A-1": {"workspace": []}}}' "scripts/eww-niri-workspaces")
+(defpoll clock_time :interval "1s" "LC_TIME=C date '+%a %d/%m %H:%M'")
+(defpoll clock_tooltip :interval "10s" "LC_TIME=C date '+%Y %B'")
+
+(defwidget workspaces [monitor]
+  (box :class "workspace-widget" :orientation "h" :space-evenly false :valign "center"
+    (for wsp in {niri_data.outputs[monitor].workspaces}
+      (eventbox :cursor "pointer"
+          (button :class "workspace-btn ${wsp.is_active ? 'active' : ''} ${arraylength(wsp.columns) == 0 ? 'empty' : 'occupied'}"
+                  :onclick "niri msg action focus-workspace ${wsp.index}"
+             (box :space-evenly false :valign "center" :halign "center"
+            (label :text "${wsp.index}" :visible {arraylength(wsp.columns) == 0})
+            (for col in "${wsp.columns}"
+              (box :valign "center":halign "center"
+                    :class "column-indicator ${col.has_focused_window ? 'focused' : ''}"
+                  (label :text "  ")))))))))
+
+(defwidget clock []
+  (box :class "clock-widget" :tooltip clock_tooltip
+    (label :text clock_time)))
+
+(defwidget cpu []
+  (eventbox :onclick "niri msg action spawn -- alacritty -e btop" :cursor "pointer"
+    (box :class "cpu-widget" :tooltip "CPU usage: ${round(EWW_CPU.avg, 0)}%" :space-evenly false
+      (label :text " ${round(EWW_CPU.avg, 0)}%"))))
+
+(defwidget memory []
+  (eventbox :onclick "niri msg action spawn -- alacritty -e btop" :cursor "pointer"
+    (box :class "memory-widget" :tooltip "RAM usage: ${round(EWW_RAM.used_mem_perc, 0)}%" :space-evenly false
+      (label :text " ${round(EWW_RAM.used_mem_perc, 0)}%"))))
+
+(defwidget disk []
+  (box :class "disk-widget" :tooltip "Disk usage"
+    (label :text " ${round(EWW_DISK['/'].used_perc, 0)}%")))

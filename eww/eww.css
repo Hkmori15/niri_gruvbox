@@ -1,0 +1,107 @@
+* {
+  border: none;
+  border-radius: 8px;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+window,
+.background,
+.bar {
+  background-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+button,
+button:hover,
+button:active,
+button:focus,
+button:backdrop {
+  background-color: transparent;
+  background-image: none;
+  border-style: none;
+  border-width: 0;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+}
+
+.workspace-widget,
+.clock-widget,
+.cpu-widget,
+.memory-widget,
+.disk-widget {
+  background-color: #282828;
+  border: 1px solid #665c54;
+  padding: 3px 13px;
+  margin: 8px 5px;
+}
+
+.workspace-widget {
+  padding: 3px 8px;
+}
+
+window box.workspace-widget button.workspace-btn {
+  padding: 0px 4px;
+  color: #928374;
+  background-color: transparent;
+  background-image: none;
+  border-style: none;
+  border-width: 0;
+  border-radius: 5px;
+  margin: 0px 2px;
+  min-height: 20px;
+}
+
+window box.workspace-widget button.workspace-btn:hover {
+  background-color: #3c3836;
+  background-image: none;
+}
+
+window box.workspace-widget button.workspace-btn.active {
+  color: #83a598;
+  background-color: #504945;
+  background-image: none;
+}
+
+window box.workspace-widget button.workspace-btn.empty {
+  padding: 0px 8px;
+}
+
+.workspace-widget .workspace-btn .column-indicator {
+  background-color: #7c6f64;
+  min-width: 5px;
+  min-height: 10px;
+  margin: 0px 3px;
+  border-radius: 1px;
+}
+
+.workspace-widget .workspace-btn .column-indicator.focused {
+  background-color: #83a598;
+}
+
+.clock-widget {
+  color: #8ec07c;
+}
+
+.cpu-widget,
+.memory-widget,
+.disk-widget {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.cpu-widget {
+  color: #fe8019;
+}
+
+.memory-widget {
+  color: #b8bb26;
+}
+
+.disk-widget {
+  color: #fabd2f;
+}
