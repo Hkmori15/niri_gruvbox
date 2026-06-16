@@ -19,14 +19,6 @@ name = "cpp"
 auto-format = true
 language-servers = ["clangd"]
 
-[language-server.zls]
-command = "zls"
-
-[[language]]
-name = "zig"
-auto-format = true
-language-servers = ["zls"]
-
 [[language]]
 name = "toml"
 auto-format = true

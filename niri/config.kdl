@@ -108,7 +108,7 @@ input {
 
 // Setting up env (cursor, themes etc)
 environment {
-     XCURSOR_THEME "Capitaine-Cursor-Gruvbox"
+     XCURSOR_THEME "capitaine-cursors-gruvbox"
      XCURSOR_SIZE "24"
 }
 
@@ -273,19 +273,20 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "pipewire"
 spawn-at-startup "wireplumber"
 spawn-at-startup "pipewire-pulse"
-spawn-at-startup "/usr/lib/xdg-desktop-portal-gnome"
-spawn-at-startup "/usr/lib/xdg-desktop-portal"
+spawn-at-startup "/usr/libexec/xdg-desktop-portal"
+spawn-at-startup "/usr/libexec/xdg-desktop-portal-gnome"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/hkmori/Pictures/shinobu.jpg"
-spawn-at-startup "waybar" "-c" "/home/hkmori/.config/waybar/config.niri" "-s" "/home/hkmori/.config/waybar/style-niri.css"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/home/void-hkmori/Wallpaper/shinobu.jpg"
+spawn-at-startup "eww" "open" "bar"
 spawn-at-startup "swayosd-server"
-spawn-at-startup "mako"
+spawn-at-startup "dunst"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+
+spawn-sh-at-startup "sudo /usr/bin/pkill -9 -u sddm"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -407,8 +408,8 @@ binds {
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
     // but you need to manually put each argument in separate "" quotes.
-   // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-   // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+   XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+   XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
