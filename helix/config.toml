@@ -27,9 +27,16 @@ display-messages = true
 display-inlay-hints = true
 
 [editor.statusline]
-left = ["mode", "spinner", "file-name"]
+left = ["mode", "spinner", "version-control", "file-name"]
 center = ["file-modification-indicator", "read-only-indicator"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type"
+]
 separator = "│"
 
 mode.normal = "NORMAL"
@@ -40,7 +47,7 @@ mode.select = "SELECT"
 space = "·"
 nbsp = "⍽"
 tab = "→"
-newline ="⏎"
+newline = "⏎"
 
 [editor.whitespace.render]
 space = "none"
